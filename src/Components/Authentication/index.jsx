@@ -17,19 +17,19 @@ export const SignIn = () => {
   }
 
   return (
-    <div className="signin">
-      <form className="email-password-signin" onSubmit={signInSubmit}>
-        <input className="signin-input" placeholder="Email" type="email" ref={emailRef} required/>
-        <input className="signin-input" placeholder="Password" type="password" ref={passwordRef} required/>
+    <div className="sign-in">
+      <form className="email-password-sign-in" onSubmit={signInSubmit}>
+        <input className="sign-in-input sign-in-email" placeholder="Email" type="email" ref={emailRef} required/>
+        <input className="sign-in-input sign-in-password" placeholder="Password" type="password" ref={passwordRef} required/>
         
-        <button className="signin-submit" type="submit">Sign In</button>
+        <button className="btn-sign-in" type="submit">Sign In</button>
       </form>
 
-      <img src={googleIcon} alt="Log in with Google" className="btn-social-signin" onClick={signInWithGoogle} />
-      <img src={twitterIcon} alt="Log in with Twitter" className="btn-social-signin" onClick={signInWithTwitter} />
-      <img src={facebookIcon} alt="Log in with Facebook" className="btn-social-signin" onClick={signInWithFacebook} />
+      <img src={googleIcon} alt="Log in with Google" className="btn-social-sign-in btn-google-sign-in" onClick={signInWithGoogle} />
+      <img src={twitterIcon} alt="Log in with Twitter" className="btn-social-sign-in btn-twitter-sign-in" onClick={signInWithTwitter} />
+      <img src={facebookIcon} alt="Log in with Facebook" className="btn-social-sign-in btn-facebook-sign-in" onClick={signInWithFacebook} />
 
-      <p className="signin-result" />
+      <p className="sign-in-result" />
     </div>
   )
 }
