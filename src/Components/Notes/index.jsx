@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react"
 import { useNotes, NotesProvider } from "../../Contexts/Notes"
 
 export const NewNote = () => {
-  const noteRef = useRef()
-
   const { newNote } = useNotes()
+  
+  const noteRef = useRef()
 
   const newNoteSubmit = (event) => {
     event.preventDefault()
@@ -31,11 +31,19 @@ export const Note = (props) => {
 
   const note = props.note
 
-  const updateNoteClick = () => {
-    updateNote(note.id, "Updated content")
+  const noteUpdateRef = useRef()
+
+  const updateNoteSubmit = (event) => {
+    event.preventDefault()
+
+    updateNote(note.id, noteUpdateRef.current.value)
+
+    noteUpdateRef.current.value = ""
   }
 
-  const deleteNoteClick = () => {
+  const deleteNoteSubmit = (event) => {
+    event.preventDefault()
+    
     deleteNote(note.id)
   }
 
@@ -43,8 +51,15 @@ export const Note = (props) => {
     <li className="note">
       <p className="note-content">{note.content}</p>
       
-      <button className="btn-update-note" onClick={updateNoteClick}>Update</button>
-      <button className="btn-delete-note" onClick={deleteNoteClick}>Delete</button>
+      <form className="update-note" onSubmit={updateNoteSubmit}>
+        <input className="update-note-input" placeholder="Note content" ref={noteUpdateRef} required/>
+        
+        <button className="btn-update-note" type="submit">Update</button>
+      </form>
+
+      <form className="delete-note" onSubmit={deleteNoteSubmit}>
+        <button className="btn-delete-note" type="submit">Delete</button>
+      </form>
     </li>
   )
 }
